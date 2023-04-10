@@ -1,0 +1,20 @@
+import React from 'react';
+
+const ReservationsIcon = ({ width, height, color }) => (
+  <svg
+    width={width || '20'}
+    height={height || '20'}
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M16.1905 16.1905V14.2857H18.0952V16.1905H20V18.0952H18.0952V20H16.1905V18.0952H14.2857V16.1905H16.1905ZM1.90476 5.71429H17.1429V2.85714H15.2381V3.80952H13.3333V2.85714H5.71429V3.80952H3.80952V2.85714H1.90476V5.71429ZM1.90476 7.61905V17.1429H11.4286V19.0476H1.90476C0.852791 19.0476 0 18.1948 0 17.1429V2.85714C0 1.80517 0.852791 0.952381 1.90476 0.952381H3.80952V0H5.71429V0.952381H13.3333V0H15.2381V0.952381H17.1429C18.1948 0.952381 19.0476 1.80517 19.0476 2.85714V11.4286H17.1429V7.61905H1.90476Z"
+      fill={color || '#007AFF'}
+    />
+  </svg>
+);
+
+export default ReservationsIcon;

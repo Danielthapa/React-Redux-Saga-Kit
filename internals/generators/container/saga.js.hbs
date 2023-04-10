@@ -1,0 +1,26 @@
+import { takeLatest, call, put } from 'redux-saga/effects';
+import request from '../../../utils/request';
+import APIEndPoints, { APIHeaders } from '../../../globalConstants';
+import { defaultAction } from './actions';
+import {{ camelCase name }}Constants from './constants';
+
+export function* defaultActionSaga() {
+  try {
+    const res = yield call(request, APIEndPoints.DUMMY_API, {
+      method: 'GET',
+      headers: APIHeaders,
+    });
+    if (res.error === true) {
+      yield put(defaultAction(res.error));
+    } else {
+      yield put(defaultAction(res.data));
+    }
+  } catch (error) {
+    yield put(defaultAction(error.msg));
+  }
+}
+
+// Individual exports for testing
+export default function* {{ camelCase name }}Saga() {
+  yield takeLatest({{ camelCase name }}Constants.DEFAULT_ACTION, defaultActionSaga);
+}

@@ -1,0 +1,17 @@
+/*
+ *
+ * {{ properCase name }} reducer
+ *
+ */
+import { createReducer } from '@reduxjs/toolkit';
+import { defaultAction } from './actions';
+
+export const initialState = {};
+
+const {{ camelCase name }}Reducer = createReducer(initialState, (builder) => {
+  builder.addCase(defaultAction, (state, payload) => {
+    return state;
+  })
+})
+
+export default {{ camelCase name }}Reducer;

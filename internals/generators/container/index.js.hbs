@@ -1,0 +1,75 @@
+/**
+ *
+ * {{properCase name }}
+ *
+ */
+
+{{#if memo}}
+import { memo } from 'react';
+{{/if}}
+import { connect } from 'react-redux';
+{{#if wantHeaders}}
+// import { Helmet } from 'react-helmet';
+{{/if}}
+{{#if wantMessages}}
+// import { FormattedMessage } from 'react-intl';
+{{/if}}
+{{#if wantActionsAndReducer}}
+import { createStructuredSelector } from 'reselect';
+{{/if}}
+import { compose } from 'redux';
+
+{{#if wantSaga}}
+import useInjectSaga from 'utils/injectSaga';
+{{/if}}
+{{#if wantActionsAndReducer}}
+import useInjectReducer from 'utils/injectReducer';
+import {{ properCase name }} from './{{ properCase name }}';
+import makeSelect{{properCase name}} from './selectors';
+import reducer from './reducer';
+{{/if}}
+{{#if wantSaga}}
+import saga from './saga';
+{{/if}}
+
+const key = '{{ camelCase name }}';
+
+{{#if wantActionsAndReducer}}
+const mapStateToProps = createStructuredSelector({
+  {{ camelCase name }}: makeSelect{{properCase name}}(),
+});
+{{/if}}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+  };
+}
+
+{{#if wantActionsAndReducer}}
+const withReducer = useInjectReducer({ key, reducer });
+{{/if}}
+{{#if wantSaga}}
+const withSaga = useInjectSaga({ key, saga});
+{{/if}}
+
+
+
+{{#if wantActionsAndReducer}}
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+{{else}}
+const withConnect = connect(null, mapDispatchToProps);
+{{/if}}
+
+export default compose(
+  withConnect,
+  {{#if wantActionsAndReducer}}
+  withReducer,
+  {{/if}}
+  {{#if wantSaga}}
+  withSaga,
+  {{/if}}
+{{#if memo}}
+  memo,
+{{/if}}
+)({{ properCase name }});

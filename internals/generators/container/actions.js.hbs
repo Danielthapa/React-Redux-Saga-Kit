@@ -1,0 +1,23 @@
+/*
+ *
+ * {{ properCase name }} actions
+ *
+ */
+
+import { createAction } from '@reduxjs/toolkit';
+import {{ camelCase name }}Constants from './constants';
+
+//  action without payload
+export const defaultAction = createAction({{ camelCase name }}Constants.DEFAULT_ACTION);
+
+//  action with payload
+export const defaultActionWithPayload = createAction(
+  {{ camelCase name }}Constants.DEFAULT_ACTION_WITH_PAYLOAD,
+  function prepare(data) {
+    return {
+      payload: {
+        data,
+      },
+    };
+  },
+);
